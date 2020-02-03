@@ -11,8 +11,8 @@ const contacts = require("./routes/contacts");
 
 app.use(express.json({ extended: false }))
 
-app.use('/api/v1/auth',users)
-app.use('/api/v1/users', auth)
+app.use('/api/v1/auth',auth)
+app.use('/api/v1/users', users)
 app.use('/api/v1/contacts', contacts)
 
 // handle errors
