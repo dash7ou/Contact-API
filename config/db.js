@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const config = require('config');
 const dbURI = config.get('mongoURI');
 
-const connectDB = ()=>{
+const connectDB = async ()=>{
     try{
-        const connection = await mongoose.connect(dbURI, {
+        await mongoose.connect(dbURI, {
             useNewUrlParser: true,
             useCreateIndex: true,
             useUnifiedTopology: true
@@ -12,7 +12,8 @@ const connectDB = ()=>{
 
         console.log(`connected to database...`)
     }catch(err){
-        console.log('there are problem with connect to database...')
+        console.error('there are problem with connect to database...');
+        process.exit(1)
     }
 
 }

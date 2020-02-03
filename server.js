@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const connectDB = require("./config/db");
 
+
+connectDB();
+
 const users = require("./routes/users.js");
 const auth = require('./routes/auth');
 const contacts = require("./routes/contacts");
