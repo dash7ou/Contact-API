@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-
+const connectDB = require("./config/db");
 
 const users = require("./routes/users.js");
 const auth = require('./routes/auth');
