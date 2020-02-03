@@ -1,11 +1,17 @@
 const errorHandler = (err, req, res, next)=>{
-    const {errorObj: {type, errors,message, statusCode}} = err;
-
-    if(type === 'validationError'){
-        res.status(statusCode).send({error: `${errors[0].msg}`})
+    if(!err.errorObj){
+        res.status(err.statusCode || 500).send({
+            success: false,
+            error: err.message || 'Server Error'
+        });
     }
-    if(type === 'onlyMessage'){
-        res.status(statusCode).send({error: message})
+    else if(err.errorObj.type === 'validationObj'){
+        const {errorObj: { errors, statusCode}} = err;
+        return res.status(statusCode).send({error: `${errors[0].msg}`})
+    }
+    else if(err.errorObj.type === 'onlyMessage'){
+        const {errorObj: {message, statusCode}} = err;
+        return res.status(statusCode).send({error: message})
     }
 }
 
