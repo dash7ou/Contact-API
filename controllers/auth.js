@@ -49,3 +49,8 @@ exports.loginUser= asyncFun( async (req, res, next)=>{
         message: 'login success',
     })
 })
+
+exports.getUserProfile = (req, res, next)=>{
+    const { user } = req;
+    res.send({user})
+}
