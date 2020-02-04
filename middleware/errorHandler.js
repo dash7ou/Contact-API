@@ -4,8 +4,10 @@ const errorHandler = (err, req, res, next)=>{
             success: false,
             error: err.message || 'Server Error'
         });
+
+        console.error(err)
     }
-    else if(err.errorObj.type === 'validationObj'){
+    else if(err.errorObj.type === 'validationError'){
         const {errorObj: { errors, statusCode}} = err;
         return res.status(statusCode).send({error: `${errors[0].msg}`})
     }

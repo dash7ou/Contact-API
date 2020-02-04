@@ -42,4 +42,10 @@ UserSchema.methods.getUserToken = function (){
 
 }
 
+
+UserSchema.methods.matchPassword = function(enterPassword){
+    return bcrypt.compare(enterPassword, this.password);
+}
+
+
 module.exports = mongoose.model('User', UserSchema)
