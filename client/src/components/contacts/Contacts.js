@@ -6,7 +6,7 @@ const Contacts = ()=>{
     const { contacts } = useContext(ContactContext);
     return(
         <Fragment>
-            {contacts.map(contact => <h3>{contact.name}</h3>)}
+            {contacts.map(contact => <ContactItem  contact={contact}/>)}
         </Fragment>
     )
 }

@@ -20,10 +20,12 @@ const ContactState = props =>{
                 id: 1,
                 name: 'hadeel al-mora',
                 phone: '2222-00-22',
-                type: "professional"
+                type: "professional",
+                email: "morad@gmail.com"
             },
             {
                 id: 2,
+                email: "mohammed@gmail.com",
                 name: 'shimaa al-mora',
                 phone: '3333-00-22',
                 type: "personal"
