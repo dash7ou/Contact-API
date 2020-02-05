@@ -18,7 +18,7 @@ const ContactState = props =>{
         contacts : [
             {
                 id: 1,
-                name: 'hadeel al-mora',
+                name: 'hadeel',
                 phone: '2222-00-22',
                 type: "professional",
                 email: "morad@gmail.com"
@@ -26,8 +26,15 @@ const ContactState = props =>{
             {
                 id: 2,
                 email: "mohammed@gmail.com",
-                name: 'shimaa al-mora',
+                name: 'shimaa',
                 phone: '3333-00-22',
+                type: "personal"
+            },
+            {
+                id: 3,
+                email: "nooor@gmail.com",
+                name: 'noor',
+                phone: '553-10-21',
                 type: "personal"
             }
         ]
