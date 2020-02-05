@@ -3,7 +3,7 @@ import ContactContext from "../../context/contact/contactContext"
 import ContactItem from "./ContactItem";
 
 const Contacts = ()=>{
-    const { contacts, deleteContact } = useContext(ContactContext);
+    const { contacts, deleteContact, setCurrent } = useContext(ContactContext);
     return(
         <Fragment>
             {
@@ -11,6 +11,7 @@ const Contacts = ()=>{
                     <ContactItem  
                         contact={contact}
                         deleteContact={deleteContact}
+                        setCurrent={setCurrent}
                         key={contact.id}
                     />
                 )

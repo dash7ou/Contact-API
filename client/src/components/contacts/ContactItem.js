@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types"
 
 
-const ContactItem = ({ contact, deleteContact })=>{
+const ContactItem = ({ contact, deleteContact,setCurrent })=>{
 
     const {id , name , email, phone , type } = contact;
     const typeUpper = `${type.charAt(0).toUpperCase()}${type.slice(1)}`
@@ -30,7 +30,7 @@ const ContactItem = ({ contact, deleteContact })=>{
                 )}
             </ul>
             <p>
-                <button className="btn btn-dark btn-sm">Edit</button>
+                <button className="btn btn-dark btn-sm" onClick={()=>setCurrent(contact)}>Edit</button>
                 <button className="btn btn-danger btn-sm" onClick={()=>deleteContact(id)}>delete</button>
             </p>
         </div>

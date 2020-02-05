@@ -25,5 +25,20 @@ export default (state, action)=>{
                     ...state.contacts.filter(contact => contact.id !== action.contactId)
                 ]
             }
+        case SET_CURRENT:
+            return {
+                ...state,
+                current: action.contact
+            }
+        case CLEAR_CURRENT:
+            return {
+                ...state,
+                current: null
+            }
+        case UPDATE_CONTACT:
+            return {
+                ...state,
+                contacts: state.contacts.map(contact => contact.id === action.newContact.id ? action.newContact : contact)
+            }
     }
 }
