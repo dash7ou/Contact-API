@@ -18,5 +18,12 @@ export default (state, action)=>{
                     action.contact
                 ]
             }
+        case DELETE_CONTACT:
+            return {
+                ...state,
+                contacts:[
+                    ...state.contacts.filter(contact => contact.id !== action.contactId)
+                ]
+            }
     }
 }

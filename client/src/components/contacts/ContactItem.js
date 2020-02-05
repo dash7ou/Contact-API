@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types"
 
-const ContactItem = ({ contact })=>{
+
+const ContactItem = ({ contact, deleteContact })=>{
+
     const {id , name , email, phone , type } = contact;
     const typeUpper = `${type.charAt(0).toUpperCase()}${type.slice(1)}`
     return(
@@ -29,7 +31,7 @@ const ContactItem = ({ contact })=>{
             </ul>
             <p>
                 <button className="btn btn-dark btn-sm">Edit</button>
-                <button className="btn btn-danger btn-sm">Edit</button>
+                <button className="btn btn-danger btn-sm" onClick={()=>deleteContact(id)}>delete</button>
             </p>
         </div>
     );
