@@ -40,5 +40,20 @@ export default (state, action)=>{
                 ...state,
                 contacts: state.contacts.map(contact => contact.id === action.newContact.id ? action.newContact : contact)
             }
+        case FILTER_CONTACT:
+            return {
+                ...state,
+                contactFiltered: [
+                    ...state.contacts.filter(contact =>{
+                        return contact.name.toLowerCase().includes(action.filterText) || contact.email.toLowerCase().includes(action.filterText)
+                    })
+                ]
+            }
+        case CLEAR_FILTER:
+            return {
+                ...state,
+                contactFiltered: null
+
+            }
     }
 }
