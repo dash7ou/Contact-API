@@ -53,7 +53,6 @@ export default (state, action)=>{
             return {
                 ...state,
                 contactFiltered: null
-
             }
     }
 }
