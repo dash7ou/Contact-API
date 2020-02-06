@@ -39,12 +39,14 @@ const AuthState = props=>{
                 token: res.headers['x-auth-token']
             })
         }catch(err){
-            dispatch({
+            return dispatch({
                 type: REGISTER_FAIL,
                 payload: err.response.data.error
             })
         }
     }
+
+    const clearError = _=> dispatch({type: CLEAR_ERRORS})
     return(
         <AuthContext.Provider
             value={{
@@ -53,7 +55,8 @@ const AuthState = props=>{
                 loading: state.loading,
                 user: state.user,
                 error: state.error,
-                registerUser
+                registerUser,
+                clearError
             }}
         >
             {props.children}
