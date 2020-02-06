@@ -45,7 +45,7 @@ exports.loginUser= asyncFun( async (req, res, next)=>{
     }
     const token = user.getUserToken();
 
-    return res.status(200).header("x-auth-token", token).send({
+    return res.status(200).header("x-auth-token", `Bearer ${token}`).send({
         message: 'login success',
     })
 })

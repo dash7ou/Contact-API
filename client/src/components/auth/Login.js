@@ -1,14 +1,28 @@
-import React, { useState, useContext} from "react";
+import React, { useState, useContext, useEffect} from "react";
 import alertContext from "../../context/alert/alertContext";
+import authContext from "../../context/auth/authContext";
 
-const Login = ()=>{
+
+const Login = (props)=>{
     const { setAlert } = useContext(alertContext);
+    const { loginUser, error, clearError, isAuthenticated }= useContext(authContext);
     const [ user , setUser ] = useState({
         email: '',
         password: '',
     });
 
     const { email, password } = user;
+
+    useEffect(()=>{
+        if(isAuthenticated){
+            props.history.push("/")
+        }
+        if(error === 'Please signup first' || error ==='Password invalid.'){
+            setAlert(error, 'danger');
+            clearError()
+        }
+        // eslint-disable-next-line
+    }, [error, isAuthenticated, props.history ])
 
 
     const onChange= e=>{
@@ -23,7 +37,7 @@ const Login = ()=>{
         if(email === '' || password=== ''){
             return setAlert('Please enter all fields', 'danger');
         }
-        console.log('login')
+        loginUser({email , password});
     }
     return(
         <div className="form-container">

@@ -66,6 +66,33 @@ const AuthState = props=>{
         }
     }
 
+
+    const loginUser =async dataLogin =>{
+        console.log(dataLogin)
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        try{
+            const res = await axios.post('/api/v1/auth', dataLogin, config);
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: res.data,
+                token: res.headers['x-auth-token']
+            })
+
+            loadUser()
+        }catch(err){
+            return dispatch({
+                type: LOGIN_FAIL,
+                payload: err.response.data.error
+            })
+        }
+    }
+
+
     const clearError = _=> dispatch({type: CLEAR_ERRORS})
     return(
         <AuthContext.Provider
@@ -77,7 +104,8 @@ const AuthState = props=>{
                 error: state.error,
                 registerUser,
                 clearError,
-                loadUser
+                loadUser,
+                loginUser
             }}
         >
             {props.children}
