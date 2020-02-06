@@ -40,8 +40,8 @@ exports.postUser = asyncFun(async(req, res, next)=>{
     await user.save();
     const token = user.getUserToken()
 
-    return res.status(200).header("x-auth-token", token).json({
+    return res.status(200).header("x-auth-token", `Bearer ${token}`).json({
         message: 'user created',
-        id: user._id
+        user: user._id,
     })
 });

@@ -15,5 +15,7 @@ export default (state , action)=>{
             return [
                 ...state.filter(alert => alert.id !== action.id)
             ]
+        default:
+            return state
     }
 }
