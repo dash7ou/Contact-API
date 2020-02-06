@@ -9,9 +9,14 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import AlerState from "./context/alert/AlertState";
 import Alerts from "./components/layout/Alerts";
-
+import setAuthToken from "./utils/setAuthToken";
 
 import './App.css';
+
+if(localStorage.token){
+  setAuthToken(localStorage.token)
+}
+
 
 function App() {
   return (

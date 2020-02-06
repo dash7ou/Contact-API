@@ -2,9 +2,9 @@ import React, { useState, useContext, useEffect } from "react";
 import alertContext from "../../context/alert/alertContext";
 import authContext from "../../context/auth/authContext";
 
-const Register = ()=>{
+const Register = (props)=>{
     const { setAlert } = useContext(alertContext);
-    const { registerUser, error, clearError } = useContext(authContext);
+    const { registerUser, error, clearError, isAuthenticated } = useContext(authContext);
 
     const [ user , setUser ] = useState({
         name: '',
@@ -17,11 +17,15 @@ const Register = ()=>{
 
 
     useEffect(()=>{
+        if(isAuthenticated){
+            props.history.push("/")
+        }
         if(error === 'User is already exist'){
             setAlert(error, 'danger');
             clearError()
         }
-    }, [error])
+        // eslint-disable-next-line
+    }, [error, isAuthenticated, props.history ])
 
     const onChange= e=>{
         setUser({
