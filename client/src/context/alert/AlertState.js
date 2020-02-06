@@ -36,4 +36,4 @@ const AlertState = props =>{
 }
 
 
-export { AlerContext as default }
+export { AlertState as default }
