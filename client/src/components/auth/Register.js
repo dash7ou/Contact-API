@@ -4,7 +4,7 @@ import authContext from "../../context/auth/authContext";
 
 const Register = (props)=>{
     const { setAlert } = useContext(alertContext);
-    const { registerUser, error, clearError, isAuthenticated, loadUser } = useContext(authContext);
+    const { registerUser, error, clearError,loadUser, isAuthenticated } = useContext(authContext);
 
     const [ user , setUser ] = useState({
         name: '',

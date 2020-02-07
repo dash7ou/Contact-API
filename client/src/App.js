@@ -34,8 +34,8 @@ function App() {
                 <Switch>
                   <PrivateRoute exact path="/" component={Home}/>
                   <Route exact path="/about" component={About} />
-                  <PublicRoute exact path="/register" component={Register}/>
-                  <PublicRoute exact path="/login" component={Login} />
+                  <Route exact path="/register" component={Register}/>
+                  <Route exact path="/login" component={Login} />
                 </Switch>
               </div>
             </Fragment>

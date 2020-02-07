@@ -28,18 +28,21 @@ const AuthState = props=>{
     const loadUser = async ()=>{
         if(localStorage.token){
             setAuthToken(localStorage.token)
+            try{
+                const res = await axios.get('/api/v1/auth');
+                dispatch({
+                    type:USER_LOADED,
+                    payload: res.data
+                })
+            }catch(error){
+                dispatch({
+                    type: AUTH_ERROR
+                })
+            }
+        }else{
+            return logout()
         }
-        try{
-            const res = await axios.get('/api/v1/auth');
-            dispatch({
-                type:USER_LOADED,
-                payload: res.data
-            })
-        }catch(error){
-            dispatch({
-                type: AUTH_ERROR
-            })
-        }
+
     }
 
     const registerUser =async dataRegister =>{
@@ -68,7 +71,6 @@ const AuthState = props=>{
 
 
     const loginUser =async dataLogin =>{
-        console.log(dataLogin)
         const config = {
             headers: {
                 'Content-Type': 'application/json'

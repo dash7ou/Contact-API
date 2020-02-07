@@ -56,6 +56,7 @@ export default (state, action)=>{
                 user: action.payload
             }
         case LOGOUT:
+            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,

@@ -5,7 +5,7 @@ import authContext from "../../context/auth/authContext";
 
 const Login = (props)=>{
     const { setAlert } = useContext(alertContext);
-    const { loginUser, error, clearError, loadUser, isAuthenticated }= useContext(authContext);
+    const { loginUser, error, clearError, loadUser , isAuthenticated }= useContext(authContext);
     const [ user , setUser ] = useState({
         email: '',
         password: '',
@@ -14,7 +14,7 @@ const Login = (props)=>{
     const { email, password } = user;
 
     useEffect(()=>{
-        loadUser()
+        loadUser();
         if(isAuthenticated){
             props.history.push("/")
         }
