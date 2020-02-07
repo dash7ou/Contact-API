@@ -11,8 +11,7 @@ import AlerState from "./context/alert/AlertState";
 import Alerts from "./components/layout/Alerts";
 import setAuthToken from "./utils/setAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
-import PublicRoute from "./routing/PublicRoute";
-
+import NotFoundPage from "./components/pages/NotFoundPage";
 
 import './App.css';
 
@@ -36,6 +35,7 @@ function App() {
                   <Route exact path="/about" component={About} />
                   <Route exact path="/register" component={Register}/>
                   <Route exact path="/login" component={Login} />
+                  <Route component={NotFoundPage} />
                 </Switch>
               </div>
             </Fragment>
