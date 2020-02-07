@@ -13,7 +13,9 @@ const Navbar = ({title, icon})=>{
                 <Link to="/about">About</Link>
             </li>
             <li>
-                <a herf="#"><i className="fas fa-sign-out-alt"/>{' '} <span className="hide-sm">Logout</span></a>
+                <a onClick={()=> {logout()}} herf="#">
+                    <i className="fas fa-sign-out-alt"/>{' '} <span className="hide-sm">Logout</span>
+                </a>
             </li>
         </Fragment>
     )

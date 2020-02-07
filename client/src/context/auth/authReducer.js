@@ -55,6 +55,15 @@ export default (state, action)=>{
                 loading: false,
                 user: action.payload
             }
+        case LOGOUT:
+            return {
+                ...state,
+                token: null,
+                isAuthenticated: false,
+                loading: false,
+                error: null ,
+                user: null
+            }
         default:
             return state
     }
