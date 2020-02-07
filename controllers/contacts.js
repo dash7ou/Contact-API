@@ -68,7 +68,46 @@ exports.createContact = asyncFun( async (req, res, next)=>{
 
 
 exports.updateContact = asyncFun( async (req, res, next)=>{
-    res.send("get Contact")
+    const {
+        params: {
+            id
+        },
+        user: {
+            _id: userId
+        },
+        body
+    } = req;
+
+    let contact = await Contact.findById(id);
+    if(!contact){
+        error = {
+            type: 'onlyMessage',
+            statusCode: 404,
+            message: 'This contact not found'
+        }
+        throw new ErrorRespose("", error)
+    }
+
+    if(contact.user.toString() !== userId.toString()){
+        error = {
+            type: 'onlyMessage',
+            statusCode: 400,
+            message: 'You are not owner '
+        }
+        throw new ErrorRespose("", error)
+    }
+
+    course = await Contact.findByIdAndUpdate(id, body, {
+        new: true,
+        runValidators: true,
+    })
+
+
+    res.status(200).send({
+        success: true,
+        data: course
+    })
+
 })
 
 
@@ -84,7 +123,7 @@ exports.deleteContact = asyncFun( async (req, res, next)=>{
     }= req;
 
     const contact = await Contact.findById(id);
-    console.log(contact)
+
     if(!contact){
         error = {
             type: 'onlyMessage',
@@ -94,6 +133,14 @@ exports.deleteContact = asyncFun( async (req, res, next)=>{
         throw new ErrorRespose("", error)
     }
 
+    if(contact.user.toString() !== userId.toString()){
+        error = {
+            type: 'onlyMessage',
+            statusCode: 400,
+            message: 'You are not owner '
+        }
+        throw new ErrorRespose("", error)
+    }
     await contact.remove();
     res.status(200).send({
         success: true,
