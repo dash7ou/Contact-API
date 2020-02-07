@@ -4,7 +4,7 @@ import authContext from "../../context/auth/authContext";
 
 const Register = (props)=>{
     const { setAlert } = useContext(alertContext);
-    const { registerUser, error, clearError, isAuthenticated } = useContext(authContext);
+    const { registerUser, error, clearError, isAuthenticated, loadUser } = useContext(authContext);
 
     const [ user , setUser ] = useState({
         name: '',
@@ -17,6 +17,7 @@ const Register = (props)=>{
 
 
     useEffect(()=>{
+        loadUser()
         if(isAuthenticated){
             props.history.push("/")
         }

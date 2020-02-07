@@ -11,6 +11,7 @@ import AlerState from "./context/alert/AlertState";
 import Alerts from "./components/layout/Alerts";
 import setAuthToken from "./utils/setAuthToken";
 import PrivateRoute from "./routing/PrivateRoute";
+import PublicRoute from "./routing/PublicRoute";
 
 
 import './App.css';
@@ -33,8 +34,8 @@ function App() {
                 <Switch>
                   <PrivateRoute exact path="/" component={Home}/>
                   <Route exact path="/about" component={About} />
-                  <Route exact path="/register" component={Register}/>
-                  <Route exact path="/login" component={Login} />
+                  <PublicRoute exact path="/register" component={Register}/>
+                  <PublicRoute exact path="/login" component={Login} />
                 </Switch>
               </div>
             </Fragment>
