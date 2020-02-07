@@ -73,5 +73,30 @@ exports.updateContact = asyncFun( async (req, res, next)=>{
 
 
 exports.deleteContact = asyncFun( async (req, res, next)=>{
-    res.send("get Contact")
+    let error;
+    const {
+        params:{
+            id
+        },
+        user: {
+            _id: userId
+        }
+    }= req;
+
+    const contact = await Contact.findById(id);
+    console.log(contact)
+    if(!contact){
+        error = {
+            type: 'onlyMessage',
+            statusCode: 404,
+            message: 'This contact not found'
+        }
+        throw new ErrorRespose("", error)
+    }
+
+    await contact.remove();
+    res.status(200).send({
+        success: true,
+        data: {}
+    })
 })
