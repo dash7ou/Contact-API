@@ -1,0 +1,5 @@
+{
+    "mongoURI": "mongodb+srv://dashzou:mohammed12345@contact-zp0h1.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "localapphahahhahahhah102****",
+    "jwtExpire": "360000"
+}
