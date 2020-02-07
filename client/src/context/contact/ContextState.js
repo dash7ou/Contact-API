@@ -10,7 +10,9 @@ import {
     UPDATE_CONTACT,
     FILTER_CONTACT,
     CLEAR_FILTER,
-    CONTACT_ERROR
+    CONTACT_ERROR,
+    GET_CONTACTS,
+    CLEAR_CONATACTS
 } from "../type"
 
 
@@ -24,9 +26,28 @@ const ContactState = props =>{
 
     const [state, dispatch ] = useReducer(contactReducer, initialState);
 
+
+    // get all contact to the user login
+    const getContext = async ()=>{
+        const config = {
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        };
+
+        try{
+            const res = await axios.get("/api/v1/contact", config);
+            dispatch({
+                type: GET_CONTACTS,
+                contacts: res.data
+            })
+        }catch(err){
+            dispatch({ type: CONTACT_ERROR, error: err.response.data.error })
+        }
+    }
+
     // Add contact
     const addContact = async (contact)=>{
-        console.log(contact)
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -34,7 +55,6 @@ const ContactState = props =>{
         }
         try{
             const res = await axios.post("/api/v1/contacts", contact, config)
-            console.log(res);
             dispatch({ type: ADD_CONTACT, contact: res.data})
         }catch(err){
             dispatch({ type: CONTACT_ERROR, error: err.response.data.error })

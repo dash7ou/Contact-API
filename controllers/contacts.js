@@ -4,7 +4,22 @@ const { validationResult } = require("express-validator");
 const ErrorRespose = require("../utils/errorResponse");
 
 exports.getContact = asyncFun( async (req, res, next)=>{
-    
+    let error;
+    const {
+        user: {
+            _id: userId
+        }
+    } = req;
+
+    const contacts = await Contact.find({
+        user: userId
+    });
+
+
+    res.status(200).send({
+        success: true,
+        contacts
+    })
 });
 
 
