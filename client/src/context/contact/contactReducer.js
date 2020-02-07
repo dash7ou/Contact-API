@@ -7,7 +7,8 @@ import {
     FILTER_CONTACT,
     CLEAR_FILTER,
     CONTACT_ERROR,
-    GET_CONTACTS
+    GET_CONTACTS,
+    CLEAR_CONATACTS
 } from "../type"
 
 export default (state, action)=>{
@@ -70,6 +71,14 @@ export default (state, action)=>{
             return {
                 ...state,
                 errorContact: action.error
+            }
+        case CLEAR_CONATACTS:
+            return{ 
+                ...state,
+                contacts : null,
+                current: null,
+                contactFiltered: null,
+                errorContact: null
             }
         default:
             return state

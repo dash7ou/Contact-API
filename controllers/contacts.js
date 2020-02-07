@@ -15,6 +15,12 @@ exports.getContact = asyncFun( async (req, res, next)=>{
         user: userId
     }).sort('+createdAt')
 
+    if(contacts.length === 0){
+        res.send({
+            success: true,
+            contacts: []
+        })
+    }
 
     res.status(200).send({
         success: true,
