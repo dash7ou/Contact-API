@@ -51,6 +51,7 @@ const ContactState = props =>{
             const res = await axios.post("/api/v1/contacts", contact, config)
             dispatch({ type: ADD_CONTACT, contact: res.data})
         }catch(err){
+            console.log(err.response.data.error)
             dispatch({ type: CONTACT_ERROR, error: err.response.data.error })
         }
     }
@@ -83,7 +84,7 @@ const ContactState = props =>{
             }
         }
         try{
-            const res = await axios.put(`/api/v1/contacts/${state.current._id}`, newContact, config)
+            await axios.put(`/api/v1/contacts/${state.current._id}`, newContact, config)
             dispatch({ type: UPDATE_CONTACT, newContact})
         }catch(err){
             dispatch({ type: CONTACT_ERROR, error: err.response.data.error })
