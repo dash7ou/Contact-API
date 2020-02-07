@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types"
 
 
-const ContactItem = ({ id ,contact, deleteContact,setCurrent })=>{
+const ContactItem = ({contact, deleteContact,setCurrent })=>{
 
-    const {  name , email, phone , type } = contact;
+    const { _id, name , email, phone , type } = contact;
     const typeUpper = `${type.charAt(0).toUpperCase()}${type.slice(1)}`
     return(
         <div className="card bg-light">
@@ -31,7 +31,7 @@ const ContactItem = ({ id ,contact, deleteContact,setCurrent })=>{
             </ul>
             <p>
                 <button className="btn btn-dark btn-sm" onClick={()=>setCurrent(contact)}>Edit</button>
-                <button className="btn btn-danger btn-sm" onClick={()=>deleteContact(id)}>delete</button>
+                <button className="btn btn-danger btn-sm" onClick={()=>deleteContact(_id)}>delete</button>
             </p>
         </div>
     );

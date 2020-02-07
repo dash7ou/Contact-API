@@ -29,17 +29,11 @@ const ContactState = props =>{
 
     // get all contact to the user login
     const getContext = async ()=>{
-        const config = {
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        };
-
         try{
-            const res = await axios.get("/api/v1/contact", config);
+            const res = await axios.get("/api/v1/contacts");
             dispatch({
                 type: GET_CONTACTS,
-                contacts: res.data
+                contacts: res.data.contacts
             })
         }catch(err){
             dispatch({ type: CONTACT_ERROR, error: err.response.data.error })
@@ -103,7 +97,8 @@ const ContactState = props =>{
                 filterContact,
                 contactFiltered: state.contactFiltered,
                 clearFilter,
-                errorContact : state.errorContact
+                errorContact : state.errorContact,
+                getContext
             }}
         >
             {props.children}

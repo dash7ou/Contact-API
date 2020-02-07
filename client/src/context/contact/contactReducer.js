@@ -6,11 +6,19 @@ import {
     UPDATE_CONTACT,
     FILTER_CONTACT,
     CLEAR_FILTER,
-    CONTACT_ERROR
+    CONTACT_ERROR,
+    GET_CONTACTS
 } from "../type"
 
 export default (state, action)=>{
     switch(action.type){
+        case GET_CONTACTS:
+            return{
+                ...state,
+                contacts:[
+                    ...action.contacts
+                ]
+            }
         case ADD_CONTACT:
             return {
                 ...state,
