@@ -33,7 +33,7 @@ export default (state, action)=>{
             return {
                 ...state,
                 contacts:[
-                    ...state.contacts.filter(contact => contact.id !== action.contactId)
+                    ...state.contacts.filter(contact => contact._id !== action.contactId)
                 ],
                 errorContact: null
             }
