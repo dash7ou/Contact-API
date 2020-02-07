@@ -10,7 +10,7 @@ const ContactForm = ()=>{
         phone: '',
         type: 'personal'
     });
-    const {name , email, phone , type} = contact;
+    const { name , email, phone , type} = contact;
 
     useEffect(()=>{
         if(current !== null){
