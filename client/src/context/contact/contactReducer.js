@@ -5,7 +5,8 @@ import {
     CLEAR_CURRENT,
     UPDATE_CONTACT,
     FILTER_CONTACT,
-    CLEAR_FILTER
+    CLEAR_FILTER,
+    CONTACT_ERROR
 } from "../type"
 
 export default (state, action)=>{
@@ -16,14 +17,16 @@ export default (state, action)=>{
                 contacts:[
                     ...state.contacts,
                     action.contact
-                ]
+                ],
+                errorContact: null
             }
         case DELETE_CONTACT:
             return {
                 ...state,
                 contacts:[
                     ...state.contacts.filter(contact => contact.id !== action.contactId)
-                ]
+                ],
+                errorContact: null
             }
         case SET_CURRENT:
             return {
@@ -38,7 +41,8 @@ export default (state, action)=>{
         case UPDATE_CONTACT:
             return {
                 ...state,
-                contacts: state.contacts.map(contact => contact.id === action.newContact.id ? action.newContact : contact)
+                contacts: state.contacts.map(contact => contact.id === action.newContact.id ? action.newContact : contact),
+                errorContact: null
             }
         case FILTER_CONTACT:
             return {
@@ -53,6 +57,11 @@ export default (state, action)=>{
             return {
                 ...state,
                 contactFiltered: null
+            }
+        case CONTACT_ERROR:
+            return {
+                ...state,
+                errorContact: action.error
             }
         default:
             return state

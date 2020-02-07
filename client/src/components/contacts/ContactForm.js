@@ -28,6 +28,7 @@ const ContactForm = ()=>{
     const onChange = e => setContact({...contact, [e.target.name]: e.target.value});
     const onSubmit = e =>{
         e.preventDefault();
+        console.log('fu....')
         if(current === null ){
             addContact(contact)
         }else {

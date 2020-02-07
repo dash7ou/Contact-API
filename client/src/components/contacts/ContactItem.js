@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types"
 
 
-const ContactItem = ({ contact, deleteContact,setCurrent })=>{
+const ContactItem = ({ id ,contact, deleteContact,setCurrent })=>{
 
-    const {id , name , email, phone , type } = contact;
+    const {  name , email, phone , type } = contact;
     const typeUpper = `${type.charAt(0).toUpperCase()}${type.slice(1)}`
     return(
         <div className="card bg-light">
@@ -43,3 +43,4 @@ ContactItem.propTypes = {
 }
 
 export { ContactItem as default }
+

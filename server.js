@@ -13,7 +13,7 @@ app.use(express.json({ extended: false }))
 
 app.use('/api/v1/auth',auth)
 app.use('/api/v1/users', users)
-app.use('/api/v1/contact', contacts)
+app.use('/api/v1/contacts', contacts)
 
 // handle errors
 app.use(errorHandler);
