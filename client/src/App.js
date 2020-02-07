@@ -10,6 +10,8 @@ import Login from "./components/auth/Login";
 import AlerState from "./context/alert/AlertState";
 import Alerts from "./components/layout/Alerts";
 import setAuthToken from "./utils/setAuthToken";
+import PrivateRoute from "./routing/PrivateRoute";
+
 
 import './App.css';
 
@@ -29,7 +31,7 @@ function App() {
               <div className="container">
                 <Alerts />
                 <Switch>
-                  <Route exact path="/" component={Home}/>
+                  <PrivateRoute exact path="/" component={Home}/>
                   <Route exact path="/about" component={About} />
                   <Route exact path="/register" component={Register}/>
                   <Route exact path="/login" component={Login} />

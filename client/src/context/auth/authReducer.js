@@ -60,7 +60,7 @@ export default (state, action)=>{
                 ...state,
                 token: null,
                 isAuthenticated: false,
-                loading: false,
+                loading: true,
                 error: null ,
                 user: null
             }
