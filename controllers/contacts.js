@@ -13,7 +13,7 @@ exports.getContact = asyncFun( async (req, res, next)=>{
 
     const contacts = await Contact.find({
         user: userId
-    }).sort('-createdAt')
+    }).sort('+createdAt')
 
 
     res.status(200).send({
